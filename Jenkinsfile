@@ -29,7 +29,7 @@ pipeline {
             steps {
                 echo 'Testing the project'
                 // withGradle() {
-                    sh 'gradl test'
+                    sh 'gradle test'
                 // }
             }
         }
