@@ -1,8 +1,8 @@
 pipeline {
     agent any
 
-    tools {
-        gradle 'Gradle-6'
+    tools{
+        gradle "Gradle-7"
     }
 
 
@@ -14,7 +14,7 @@ pipeline {
         stage('Clone repository') {
             steps {
                 echo 'Cloning repository'
-                git 'https://github.com/brianmarete/java-todo.git'
+                 git "https://github.com/nivlapeter/java-todo.git"
             }
         }
         stage('Build ') {
@@ -44,3 +44,5 @@ pipeline {
         }
     }
 }
+
+
