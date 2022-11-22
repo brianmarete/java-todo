@@ -40,6 +40,7 @@ pipeline {
             }
         } 
     }
+    }
     post {
         success {
             slackSend color: "good", message: "Build #${BUILD_NUMBER} ran successfully"
@@ -50,6 +51,6 @@ pipeline {
         }
     }
 }
-}
+
 
 
