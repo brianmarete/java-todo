@@ -36,8 +36,8 @@ pipeline {
         stage('Deploy to Heroku') {
             steps {
                 withCredentials([usernameColonPassword(credentialsId: 'heroku', variable: 'PASSWORD' )]){
-                // sh "git push https://${PASSWORD.replace('@','\\@')}@git.heroku.com/serene-temple-30881.git master"
-                sh 'git push https://nivlapeter:#Royalty@1993@git.heroku.com/mighty-earth-27385.git master'
+                sh "git push https://${PASSWORD.replace('@','\\@')}@git.heroku.com/serene-temple-30881.git master"
+                // sh 'git push https://nivlapeter:#Royalty@1993@git.heroku.com/mighty-earth-27385.git master'
                 
                 }
             }
