@@ -17,7 +17,7 @@ pipeline {
                  git "https://github.com/nivlapeter/java-todo.git"
             }
         }
-        stage('Build ') {
+        stage('Build Project') {
             steps {
                 echo "Build number ${BUILD_NUMBER}"
                 // withGradle() {
@@ -25,7 +25,7 @@ pipeline {
                 // }
             }
         }
-        stage('Test') {
+        stage('Test Project') {
             steps {
                 echo 'Testing the project'
                 // withGradle() {
