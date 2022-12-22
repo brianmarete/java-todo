@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('clone repository') {
       steps {
-        git clone 'https://github.com/nivlapeter/java-todo.git'
+        git 'https://github.com/nivlapeter/java-todo.git'
       }
     }
     stage('Build Project') {
