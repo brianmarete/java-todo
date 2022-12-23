@@ -14,7 +14,7 @@ pipeline {
         sh 'gradle build'
       }
     }
-    stage('Test') {
+    stage('Test the App') {
       steps {
         sh 'gradle test'
       }
