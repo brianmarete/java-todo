@@ -3,6 +3,9 @@ pipeline {
   tools {
     gradle 'Gradle-7'
   }
+  parameters {
+    booleanParam(name: 'RELEASE', defaultValue: false)
+  }
   stages {
     stage('clone repository') {
       steps {
@@ -28,7 +31,13 @@ pipeline {
     }
     stage('Slack') {
       steps {
-        slackSend message: 'Successful'
+        script {
+          if (params.RELEASE) {
+            slackSend message: 'Successful'
+          }else {
+            slackSend message: 'Failed'
+          }
+        }
       }
     }
   }
