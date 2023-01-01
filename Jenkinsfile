@@ -29,7 +29,7 @@ pipeline {
   }
   post {
         success {
-      slackSend message: 'Successful'
+      slackSend message: 'Successful - Great Job Mate!'
         }
         failure {
       slackSend message: 'Failed'
