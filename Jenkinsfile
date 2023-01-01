@@ -26,6 +26,11 @@ pipeline {
         }
       }
     }
+    stage('Slack') {
+      steps {
+        slackSend message: 'Successful'
+      }
+    }
   }
   post {
     always {
