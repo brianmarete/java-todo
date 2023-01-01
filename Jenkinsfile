@@ -29,21 +29,13 @@ pipeline {
         }
       }
     }
-    stage('Slack') {
-      steps {
-        script {
-          if (params.RELEASE) {
-            slackSend message: 'Successful'
-          }else {
-            slackSend message: 'Failed'
-          }
-        }
-      }
-    }
   }
   post {
-    always {
-      echo 'Pipeline Finished'
-    }
+        success {
+            slackSend message: 'Successful'
+        }
+        failure {
+            slackSend message: 'Failed'
+        }
   }
 }
