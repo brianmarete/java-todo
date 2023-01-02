@@ -29,10 +29,10 @@ pipeline {
   }
   post {
         success {
-      slackSend message: 'Successful - Great Job Mate!'
+      slackSend color: 'good', message: "Successfull build for ${BUILD_ID}"
         }
         failure {
-      slackSend message: 'Failed'
+      slackSend color: 'danger', message: "Build for ${BUILD_ID} failed"
         }
   }
 }
