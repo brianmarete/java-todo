@@ -1,6 +1,6 @@
 # Java-Week3-ToDo-List
 
-Author: Mr. Alvin_Ndungu
+Author: Mr. Alvin_Ndungu/
 
 Official repo for the "To Do List" project using Java, Spark, Handlebars etc for week 3 of java unit.
 
