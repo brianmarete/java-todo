@@ -1,9 +1,11 @@
 # Java-Week3-ToDo-List
 
-Author: Brian Marete
+Author: Mr. Alvin_Ndungu/
 
 Official repo for the "To Do List" project using Java, Spark, Handlebars etc for week 3 of java unit.
 
 Each branch contains a new "Step" of code. Please fork, then clone.
 
-Date: 17 Nov 2022
+CI/CD Pipeline
+
+Date: 22 Dec 2022

@@ -1,46 +1,38 @@
 pipeline {
-    agent any
-
-    tools {
-        gradle 'Gradle-6'
+  agent any
+  tools {
+    gradle 'Gradle-7'
+  }
+  stages {
+    stage('clone repository') {
+      steps {
+        git 'https://github.com/nivlapeter/java-todo.git'
+      }
     }
-
-
-    environment {
-        VERSION_NUMBER = '1.0'
+    stage('Build Project') {
+      steps {
+        sh 'gradle build'
+      }
     }
-
-    stages {
-        stage('Clone repository') {
-            steps {
-                echo 'Cloning repository'
-                git 'https://github.com/brianmarete/java-todo.git'
-            }
-        }
-        stage('Build ') {
-            steps {
-                echo "Build number ${BUILD_NUMBER}"
-                // withGradle() {
-                    sh 'gradle build'
-                // }
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing the project'
-                // withGradle() {
-                    sh 'gradl test'
-                // }
-            }
-        }
+    stage('Testing_Stage') {
+      steps {
+        sh 'gradle test'
+      }
     }
-    post {
+    stage('Deploy to Heroku') {
+      steps {
+        withCredentials([usernameColonPassword(credentialsId: 'af7ffbc3-0cc5-4ff7-a50d-b0e970c8ffe3', variable: 'HEROKU_CREDENTIALS')]) {
+          sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/glacial-beyond-51734.git'
+        }
+      }
+    }
+  }
+  post {
         success {
-            slackSend color: "good", message: "Build #${BUILD_NUMBER} ran successfully"
+      slackSend color: 'good', message: "Successfull build for BUILD_ID:${BUILD_ID}"
         }
-        
         failure {
-            slackSend color: "danger", message: "Build #${BUILD_NUMBER} failed"
+      slackSend color: 'danger', message: "Build_ID:${BUILD_ID} failed"
         }
-    }
+  }
 }
